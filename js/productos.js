@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const containerList = document.querySelector(".container-list");
     const searchInput = document.querySelector("#search");
 
-    // 🔹 Obtener productos
+    
     const fetchProductos = async () => {
         try {
             const response = await fetch("http://localhost:3000/");
@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // 🔹 Mostrar productos en la lista
+    
     const mostrarProductos = (productos) => {
-        containerList.innerHTML = ""; // Limpiar antes de insertar
+        containerList.innerHTML = ""; 
 
         productos.forEach(producto => {
             const card = document.createElement("div");
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            // Agregar event listener para eliminar
+            
             const btnEliminar = card.querySelector(".card-button_delete");
             btnEliminar.addEventListener("click", () => eliminarProducto(producto._id));
 
@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // 🔹 Capturar el input de búsqueda
+    
     if (searchInput) {
         searchInput.addEventListener("input", async (event) => {
             const query = event.target.value.trim();
 
             if (query === "") {
-                fetchProductos(); // Si el input está vacío, mostrar todos los productos
+                fetchProductos(); 
                 return;
             }
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 🔹 Eliminar producto
+    
     const eliminarProducto = async (id) => {
         if (!confirm("¿Seguro que deseas eliminar este producto?")) return;
 
@@ -74,17 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!response.ok) throw new Error("No se pudo eliminar el producto");
 
-            fetchProductos(); // Actualizar la lista
+            fetchProductos(); 
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
         }
     };
 
-    // 🔹 Cargar productos al iniciar
     if (containerList) {
         fetchProductos();
     }
 
-    // Hacer accesible fetchProductos para agregar.js
+
     window.fetchProductos = fetchProductos;
 });

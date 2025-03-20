@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     fetchProductos(); 
                 }
 
-                // Limpiar mensaje después de 3 segundos
+                
                 setTimeout(() => {
                     mensaje.textContent = "";
                 }, 3000);

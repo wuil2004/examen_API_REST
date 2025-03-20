@@ -7,9 +7,9 @@
         const stockInput = form.querySelector("input[name='stock']");
         const submitButton = form.querySelector(".form__button");
     
-        let currentProductId = null; // Guarda el ID 
+        let currentProductId = null; 
     
-        //Cargar productos
+        
         async function fetchProducts(query = "") {
             let url = "http://localhost:3000/";
             if (query) url += `search/?name=${encodeURIComponent(query)}`;
@@ -19,7 +19,7 @@
             renderProducts(products);
         }
     
-        //Mostrar productos en la lista
+        
         function renderProducts(products) {
             containerList.innerHTML = "";
             products.forEach(product => {
@@ -86,9 +86,9 @@
             alert("Producto modificado exitosamente.");
             form.reset();
             currentProductId = null;
-            fetchProducts(); // Refresca la lista
+            fetchProducts(); 
         });
     
-        // Inicial: cargar productos
+        
         fetchProducts();
     });
